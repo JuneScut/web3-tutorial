@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 
+import cover from "../assets/nike-air-force_2x.png";
+import model from "../assets/AirForcex.usdz";
+
 const App = () => {
   const [signerAddress, setSignerAddress] = useState("");
   const [signerBalance, setSignerBalance] = useState<any>("");
@@ -29,8 +32,16 @@ const App = () => {
   return (
     <div>
       <div>
+        <a
+          rel="ar"
+          href={"https://developer.apple.com/ar/photogrammetry/AirForce.usdz"}
+        >
+          <img src={cover} />
+        </a>
+      </div>
+      <div>
         <p>Signer Address: {signerAddress}</p>
-        <p>Signer Balance: {signerBalance}</p>
+        <p>Signer Balances: {signerBalance}</p>
       </div>
       <button onClick={getInfo}>Connect to MetaMask</button>
     </div>

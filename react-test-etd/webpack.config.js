@@ -31,6 +31,23 @@ module.exports = {
           },
         },
       },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.usdz$/],
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              // 图片低于 10k 会被转换成 base64 格式的 dataUrl
+              limit: 10 * 1024,
+              // [hash] 占位符和 [contenthash] 是相同的含义
+              // 都是表示文件内容的 hash 值，默认是使用 md5 hash 算法
+              name: "[name].[contenthash].[ext]",
+              // 保存到 images 文件夹下面
+              outputPath: "images",
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -45,7 +62,7 @@ module.exports = {
     static: "./dist",
     // contentBase: path.join(__dirname, "dist"),
     open: true,
-    port: 3000,
+    port: 3001,
     historyApiFallback: {
       // browserHistory的时候，刷新会报404. 自动重定向到index.html
       index: "./index.html",

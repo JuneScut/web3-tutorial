@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const Contract = await ethers.getContractFactory("MyNFT");
+  const Contract = await ethers.getContractFactory("ARNFT");
   const contract = await Contract.deploy();
 
   await contract.deployed();
