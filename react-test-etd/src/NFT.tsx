@@ -3,26 +3,34 @@ import React, { useEffect } from "react";
 import { useState, useCallback } from "react";
 
 const ACCOUNT = {
-  PK: "8809ca26ec2926883a2a1d4bfda128d12b40ac0affea93fec099a6a078defe34",
-  ADDRESS: "0x3d71519280e40f6ec003645c86761EF479040002",
+  PK: "",
+  ADDRESS: "",
 };
 
 const ContractAddress = "0x939a26F6019A52AB943dC603e4699F5bBBdC1ac2";
 
 function NFT() {
   // create states
+  const [name, setName] = useState<string>("");
+  const [introduction, setIntroduction] = useState<string>("");
+
   const [balance, setBalance] = useState("0");
   const [loading, setLoading] = useState(true);
   const [signer, setSinger] = useState<Wallet | null>();
 
   useEffect(() => {
+    // get from server
+    setName("Nike Pegasus");
+    setIntroduction(
+      "Let the Nike Air Zoom Pegasus 39 PRM help you ascend to new heights, whether you're training or jogging, with its intuitive design. With lightweight upper and ideal to wear in any season, it has a supportive sensation to help keep your feet contained, while underfoot cushioning and double Zoom Air units (1 more than the Peg 38) give you an extra pop to your step. This version has a brightly colored exterior that announces your presence on the road. Time to fly."
+    );
     // get provider and signer
     const provider = new ethers.providers.Web3Provider(
       (window as any).ethereum
     );
-    setLoading(true);
     const wallet = new ethers.Wallet(ACCOUNT.PK, provider);
     setSinger(wallet);
+    setLoading(true);
   }, []);
 
   const onClick = useCallback(async () => {

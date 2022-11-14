@@ -32,7 +32,7 @@ module.exports = {
         },
       },
       {
-        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.usdz$/],
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
         use: [
           {
             loader: "url-loader",
@@ -47,6 +47,11 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        // i 后缀忽略大小写
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
